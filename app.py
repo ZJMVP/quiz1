@@ -8,10 +8,6 @@ app = Flask(__name__)
 def index():
    return render_template('index.html')
 
-@app.route('/range_sal')
-def range_sal():
-   return render_template('range_sal.html')
-
 @app.route('/updatesalary')
 def updatesalary():
    return render_template('updatesalary.html')
@@ -53,7 +49,7 @@ def update_sal():
         cursor = connection.cursor()
         name= str(request.form['name'])
         keyword= str(request.form['sal'])
-        querry="UPDATE people SET salary = '"+keyword+"'   WHERE Name ='"+name+"' "
+        querry="UPDATE people SET grade = '"+keyword+"'   WHERE name ='"+name+"' "
         cursor.execute(querry)
         connection.commit()
         querry2="Select * from people "
@@ -69,7 +65,7 @@ def updatek():
         cursor = connection.cursor()
         name= str(request.form['name'])
         keyword= str(request.form['keyword'])
-        querry="UPDATE people SET keywords = '"+keyword+"'   WHERE Name ='"+name+"' "
+        querry="UPDATE people SET notes = '"+keyword+"'   WHERE name ='"+name+"' "
         cursor.execute(querry)
         connection.commit()
         querry2="Select * from people "
@@ -85,7 +81,7 @@ def addpicture():
         currsor = connection.cursor()
         name= str(request.form['name1'])
         pic= str(request.form['pic1'])
-        querry="UPDATE people SET Picture = '"+pic+"'   WHERE Name ='"+name+"' "
+        querry="UPDATE people SET picture = '"+pic+"'   WHERE name ='"+name+"' "
         currsor.execute(querry)
         connection.commit()
         querry2="Select * from people "
@@ -94,27 +90,13 @@ def addpicture():
         connection.close()
     return render_template("list.html",rows = rows)
 
-
-
-@app.route('/range_sal', methods=['GET', 'POST'])
-def notmatch():
-    if (request.method=='POST'):
-        connection = sqlite3.connect('people.db')
-        cursor = connection.cursor()
-        salrange= (request.form['range'])
-        querry="select * from people WHERE Salary  <"+salrange+""
-        cursor.execute(querry)
-        rows = cursor.fetchall()
-        connection.close()
-    return render_template("show_pics.html",rows = rows)
-
 @app.route('/remove_person', methods=['GET', 'POST'])
 def deleterecord():
     if (request.method=='POST'):
         connection = sqlite3.connect('people.db')
         cursor = connection.cursor()
         name= str(request.form['name'])
-        querry="DELETE FROM people WHERE Name ='"+name+"' "
+        querry="DELETE FROM people WHERE name ='"+name+"' "
         cursor.execute(querry)
         connection.commit()
         querry2="Select * from people "
@@ -128,7 +110,7 @@ def list():
     connection = sqlite3.connect('people.db')
     cursor = connection.cursor()
     field=str(request.form['name'])
-    querry="Select * from people WHERE Name =  '"+field+"' "
+    querry="Select * from people WHERE name =  '"+field+"' "
     cursor.execute(querry)
     rows = cursor.fetchall()
     connection.close()

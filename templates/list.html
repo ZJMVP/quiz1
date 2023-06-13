@@ -68,26 +68,21 @@
 					<table id='customers'>
 						<tr>
 							<th><b>Name</b></th>
-							<th><b>State</b></th>
-							<th><b>Salary</b></th>
 							<th><b>Grade</b></th>
-							<th><b>Room</b></th>
-							<th><b>Telnum</b></th>
+							<th><b>Id</b></th>
 							<th><b>Image Name</b></th>
 							<th><b>Image</b></th>
-							<th><b>Keywords</b></th>
+							<th><b>Notes</b></th>
 						</tr>
 						{% for col in rows %}
 						<tr>
 							<td>{{col[0]}}</td>
 							<td>{{col[1]}}</td>
-							<td> {{ col[2]}}</td>
+							<td> {{col[2]}}</td>
 							<td>{{col[3]}}</td>
 							<td> {{col[4]}}</td>
+							<td><img style="height: 150px" src="static/{{col[4]}}" alt="No Image Found"></td>
 							<td>{{col[5]}}</td>
-							<td>{{col[6]}}</td>
-							<td><img style="height: 150px" src="static/{{col[6]}}" alt="No Image Found"></td>
-							<td>{{col[7]}}</td>
 						</tr>
 						{% endfor %}
 					</table>

@@ -1,0 +1,19 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "people" (
+	"name"	TEXT,
+	"grade"	INTEGER,
+	"id"	INTEGER,
+	"picture"	TEXT,
+	"notes"	TEXT
+);
+INSERT INTO people VALUES('ann',8,901,null,'an is top of her class');
+INSERT INTO people VALUES('bob',8,902,'lml.jpg',null);
+INSERT INTO people VALUES('cat',null,905,null,'cat is a music student');
+INSERT INTO people VALUES('dan',12,null,'js2.jpg',null);
+INSERT INTO people VALUES('eve',11,715,null,'palys the harp');
+INSERT INTO people VALUES('fanny',null,799,'np.jpg','can eat grass');
+INSERT INTO people VALUES('gary',6,1010,null,'know nothing');
+INSERT INTO people VALUES('hank',80,1099,null,null);
+INSERT INTO people VALUES('ima',null,800,'mp.jpg','ima not youas');
+COMMIT;
