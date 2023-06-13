@@ -4,8 +4,6 @@ import sqlite3
 
 app = Flask(__name__)
 
-image_names = ['chuck.jpg','dar.jpg','dave.jpg','dhru.jpg','drsl.jpg','tavo.jpg','upset.jpg']
-
 @app.route('/')
 def index():
    return render_template('index.html')
@@ -87,8 +85,6 @@ def addpicture():
         currsor = connection.cursor()
         name= str(request.form['name1'])
         pic= str(request.form['pic1'])
-		if (pic not in image_names):
-			return "alert(please choose pictures which are in assign1)"
         querry="UPDATE people SET Picture = '"+pic+"'   WHERE Name ='"+name+"' "
         currsor.execute(querry)
         connection.commit()
