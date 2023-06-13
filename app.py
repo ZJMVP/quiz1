@@ -139,5 +139,5 @@ def list():
     return render_template("show_pics.html",rows = rows)
 
 if __name__ =="__main__":
-    app.run(debug=True)
+    app.run(port=8000)
     
